@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Add Data</h3>
+<div class="card p-3">
+  <form method="POST">
+    <div class="mb-2">
+      <label>Crop</label>
+      <div class="input-group">
+        <input id="crop" name="crop" class="form-control" required>
+        <button type="button" onclick="startRecognition('crop')" class="btn btn-outline-success btn-voice">🎙️</button>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label>Income (₹)</label>
+      <div class="input-group">
+        <input id="income" name="income" type="number" class="form-control" required>
+        <button type="button" onclick="startRecognition('income')" class="btn btn-outline-success btn-voice">🎙️</button>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label>Expense (₹)</label>
+      <div class="input-group">
+        <input id="expense" name="expense" type="number" class="form-control" required>
+        <button type="button" onclick="startRecognition('expense')" class="btn btn-outline-success btn-voice">🎙️</button>
+      </div>
+    </div>
+    <button class="btn btn-success">Save</button>
+  </form>
+</div>
+<script src="{{ url_for('static', filename='js/voice.js') }}"></script>
+{% endblock %}

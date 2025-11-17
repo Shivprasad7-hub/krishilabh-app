@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card p-4">
+      <h3>Farmer Registration</h3>
+      {% if msg %}<div class="alert alert-info">{{ msg }}</div>{% endif %}
+      <form method="POST">
+        <div class="mb-2"><input class="form-control" name="name" placeholder="Full name" required></div>
+        <div class="mb-2"><input class="form-control" name="phone" placeholder="+919XXXXXXXXX" required></div>
+        <div class="mb-2"><input class="form-control" name="village" placeholder="Village/City" required></div>
+        <div class="mb-2">
+          <select name="language" class="form-select">
+            <option value="en">English</option><option value="hi">Hindi</option><option value="kn">Kannada</option>
+            <option value="te">Telugu</option><option value="ta">Tamil</option><option value="mr">Marathi</option>
+          </select>
+        </div>
+        <div class="form-check mb-2"><input class="form-check-input" type="checkbox" name="subscribed" checked> Subscribe to SMS</div>
+        <button class="btn btn-success w-100">Register Farmer</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

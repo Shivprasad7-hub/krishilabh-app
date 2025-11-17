@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-5">
+    <div class="card p-3">
+      <h4>Send SMS Alert</h4>
+      {% if flash %}<div class="alert alert-info">{{ flash }}</div>{% endif %}
+      <form method="POST" action="{{ url_for('send_alert') }}">
+        <div class="mb-2"><textarea name="message" class="form-control" rows="3" placeholder="Type message in English..." required></textarea></div>
+        <div class="mb-2">
+          <select name="target" class="form-select">
+            <option value="all">All subscribed farmers</option>
+            <option value="selected">Selected farmers</option>
+          </select>
+        </div>
+        <div class="mb-2"><select name="force_lang" class="form-select"><option value="">Auto</option><option value="en">English</option><option value="hi">Hindi</option><option value="kn">Kannada</option></select></div>
+        <div class="mb-2"><input name="selected_ids" id="selected_ids" hidden></div>
+        <button class="btn btn-success w-100">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card p-3">
+      <h4>Farmers</h4>
+      <table class="table">
+        <thead class="table-success"><tr><th><input id="check_all" type="checkbox"></th><th>Name</th><th>Phone</th><th>Village</th><th>Lang</th></tr></thead>
+        <tbody>
+          {% for f in farmers %}
+          <tr><td><input class="row_check" value="{{ f['id'] }}" type="checkbox"></td><td>{{ f['name'] }}</td><td>{{ f['phone'] }}</td><td>{{ f['village'] }}</td><td>{{ f['language'] }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+const checkAll = document.getElementById('check_all');
+const checks = document.querySelectorAll('.row_check');
+const hidden = document.getElementById('selected_ids');
+if (checkAll) checkAll.addEventListener('change', ()=>{ checks.forEach(c=>c.checked=checkAll.checked); hidden.value=Array.from(checks).filter(c=>c.checked).map(c=>c.value).join(','); });
+checks.forEach(c=>c.addEventListener('change', ()=>{ hidden.value=Array.from(checks).filter(c=>c.checked).map(c=>c.value).join(','); }));
+</script>
+{% endblock %}

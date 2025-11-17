@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Weather & Suggestions for {{ village }}</h3>
+<div class="card p-3 mb-3">
+  <p><strong>Condition:</strong> {{ weather }}</p>
+  <p><strong>Temperature:</strong> {{ temp }} °C</p>
+  <h5>Suggested crops</h5>
+  <ul>{% for c in crops %}<li>{{ c }}</li>{% endfor %}</ul>
+  <a class="btn btn-primary" href="{{ url_for('dashboard') }}">← Back</a>
+</div>
+{% endblock %}

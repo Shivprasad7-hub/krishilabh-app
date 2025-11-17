@@ -1,0 +1,14 @@
+Flask
+gunicorn
+requests
+SQLAlchemy
+twilio
+deep-translator
+Flask
+gunicorn
+Jinja2
+itsdangerous
+click
+Werkzeug
+twilio
+deep-translator

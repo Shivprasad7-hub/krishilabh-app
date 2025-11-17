@@ -1,0 +1,7 @@
+body { background: #f7fdf7; font-family: Arial, sans-serif; }
+.navbar-brand { font-weight: 700; }
+.card { border-radius: 0.8rem; }
+footer { color:#6c757d; font-size:.9rem; padding:20px 0; }
+small.muted { color:#6c757d; }
+.table-fixed { table-layout: fixed; word-wrap: break-word; }
+.btn-voice { min-width:48px; }

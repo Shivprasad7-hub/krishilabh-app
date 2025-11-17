@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Community</h3>
+<div class="card p-3">
+  {% for q in questions %}
+  <div class="mb-3"><strong>{{ q['title'] }}</strong><p>{{ q['body'] }}</p></div>
+  {% endfor %}
+</div>
+{% endblock %}
